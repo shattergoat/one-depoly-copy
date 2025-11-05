@@ -1,0 +1,51 @@
+---
+# Python interpreter
+ansible_python_interpreter: /usr/bin/python3
+
+# Version OpenNebula
+one_version: '6.8'
+one_edition: 'ce'
+
+# Mot de passe oneadmin
+one_pass: 'MotDePasseSecurise123'
+
+# Configuration réseau
+one_vip: <IP_DE_VOTRE_VM>
+one_vip_cidr: 24
+one_vip_if: eth0
+
+# Frontend nodes
+ds_frontend_nodes: frontend
+
+# Configuration KVM
+kvm_pod_cpu: 1
+kvm_pod_memory: 2048
+
+# Datastores
+ds:
+  mode: ssh
+  ssh_datastore:
+    - name: default
+      type: img
+      safe_dirs: /var/lib/one/datastores
+    - name: system
+      type: sys
+    - name: files
+      type: fil
+
+# Réseau virtuel
+vn:
+  admin_net:
+    enabled: true
+    vn_mad: bridge
+    bridge: br0
+    ar:
+      - type: IP4
+        ip: 192.168.1.100
+        size: 50
+
+# Services
+sunstone_enabled: true
+fireedge_enabled: true
+oneflow_enabled: true
+onegate_enabled: true
