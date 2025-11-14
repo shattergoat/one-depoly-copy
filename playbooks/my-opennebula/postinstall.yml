@@ -1,0 +1,13 @@
+---
+- hosts: frontend
+  become: true
+
+  tasks:
+    - name: Read oneadmin auth file
+      ansible.builtin.slurp:
+        src: /var/lib/one/.one/one_auth
+      register: oneadmin_auth
+
+    - name: Display oneadmin credentials
+      ansible.builtin.debug:
+        msg: "{{ oneadmin_auth.content | b64decode | trim }}"
