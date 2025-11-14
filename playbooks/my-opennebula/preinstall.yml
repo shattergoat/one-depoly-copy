@@ -1,10 +1,10 @@
 ---
-- hosts: all
+- hosts: node
   become: true
 
   tasks:
-    - name: Ensure netplan is installed on Debian/Ubuntu
-      apt:
+    - name: Ensure netplan is installed on Debian/Ubuntu (nodes only)
+      ansible.builtin.apt:
         name: netplan.io
         state: present
         update_cache: true
