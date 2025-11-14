@@ -1,4 +1,0 @@
----
-- import_playbook: preinstall.yml
-- name: Deploy OpenNebula AIO (Frontend + Node)
-  import_playbook: main.yml
