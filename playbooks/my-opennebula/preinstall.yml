@@ -1,7 +1,7 @@
 ---
 - hosts: node
   become: true
-
+  gather_facts: true
   tasks:
     - name: Ensure netplan is installed on Debian/Ubuntu (nodes only)
       ansible.builtin.apt:
